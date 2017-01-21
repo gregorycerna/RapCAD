@@ -114,28 +114,30 @@ cmake -G"MinGW Makefiles" .
 mingw32-make
 -------------------------------
 
-Mac OS X 10.6.2
+macOS 10.12.2 (Sierra)
 ~~~~~~~~~~~~~~~
 
-Xcode 3.2
+Xcode (8.2.1)
 ^^^^^^^^^
 
-Register with apple and download
-link:https://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=20588[Xcode 3.2.2].
+Register with Apple and download
+link:https://developer.apple.com/xcode/[Xcode].
 Install the package accepting the default options.
 
 MacPorts
 ^^^^^^^^
 
 Download the
-link:https://distfiles.macports.org/MacPorts/MacPorts-2.0.3-10.6-SnowLeopard.dmg[MacPorts Installer].
+link:https://github.com/macports/macports-base/releases/download/v2.3.5/MacPorts-2.3.5-10.12-Sierra.pkg[MacPorts Installer].
 Install the package accepting the default options.
 
 Dependencies
 ++++++++++++
 [source,shell]
 -------------------------------------------------------------
-sudo port install cgal qt4-mac
+xcode-license --install
+sudo port install qt5 cgal
+sudo port install cgal +qt5
 -------------------------------------------------------------
 
 RapCAD
@@ -148,4 +150,11 @@ cp -R /opt/local/lib/Resources/qt_menu.nib rapcad.app/Contents/Resources/
 macdeployqt rapcad.app -dmg
 hdiutil internet-enable -yes rapcad.dmg
 -------------------------
+
+If qmake doesn't work initially, you'll need to manually add qmake to your PATH, so run
+[source,shell]
+-------------------------
+sudo ln -s /opt/local/libexec/qt5/bin/qmake /opt/local/bin/qmake
+-------------------------
+
 
